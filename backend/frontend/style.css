@@ -618,40 +618,65 @@ footer a:hover {
 }
 
 /* ============================================================
-   RESPONSIVO
+   RESPONSIVO MOBILE
+   Corrige: espaço em branco no hero, input/botão pequenos,
+   padding excessivo no main.
 ============================================================ */
 @media (max-width: 768px) {
 
-  /* Hero — remove min-height e centralização vertical no mobile.
-     O justify-content: center com min-height: calc(100vh...) gerava
-     espaço em branco gigante acima e abaixo do conteúdo.
-     No mobile o conteúdo define a altura naturalmente. */
+  /* Remove min-height e centralização vertical — eram os culpados
+     do espaço em branco gigante acima e abaixo do conteúdo */
   .hero-wrap {
     min-height: 0;
     justify-content: flex-start;
-    padding: 40px 0 32px;
+    padding: 24px 0 24px;
+  }
+
+  /* Reduz padding lateral e inferior do main */
+  main {
+    padding: 0 16px 40px;
+  }
+
+  .badge {
+    margin-bottom: 18px;
   }
 
   .hero-title {
-    font-size: 28px;
+    font-size: 26px;
     letter-spacing: -0.8px;
   }
 
   .hero-sub {
     font-size: 14px;
-  }
-
-  .input-row {
-    flex-direction: column;
-  }
-
-  .btn-run {
-    width: 100%;
-    justify-content: center;
+    margin-bottom: 24px;
   }
 
   .navbar {
     padding: 0 16px;
+  }
+
+  /* Input e botão empilhados — ocupa largura total */
+  .input-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-wrap {
+    width: 100%;
+  }
+
+  /* Input mais alto para toque confortável */
+  .main-input {
+    height: 48px;
+    font-size: 15px;
+  }
+
+  /* Botão Analisar — largura total e altura confortável */
+  .btn-run {
+    width: 100%;
+    height: 48px;
+    justify-content: center;
+    font-size: 15px;
   }
 
   .trust-row {
