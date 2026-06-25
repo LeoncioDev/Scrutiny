@@ -57,11 +57,9 @@ body {
   -webkit-font-smoothing: antialiased;
   /* Grade de pontos estilo Vercel */
   background-image:
-    radial-gradient(
-      ellipse 60% 40% at 50% 0%,
+    radial-gradient(ellipse 60% 40% at 50% 0%,
       rgba(68, 147, 248, 0.1) 0%,
-      transparent 70%
-    ),
+      transparent 70%),
     radial-gradient(circle, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
   background-size:
     100% 100%,
@@ -187,10 +185,12 @@ main {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.2;
   }
@@ -264,7 +264,7 @@ main {
   color: var(--text-1);
 }
 
-.mode-tab input:checked + .tab-label {
+.mode-tab input:checked+.tab-label {
   background: var(--surface-1);
   color: var(--text-1);
   box-shadow:
@@ -482,6 +482,7 @@ main {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -619,24 +620,40 @@ footer a:hover {
 /* ============================================================
    RESPONSIVO
 ============================================================ */
-@media (max-width: 520px) {
-  .hero-title {
-    font-size: 30px;
-    letter-spacing: -1px;
+@media (max-width: 768px) {
+
+  /* Hero — remove min-height e centralização vertical no mobile.
+     O justify-content: center com min-height: calc(100vh...) gerava
+     espaço em branco gigante acima e abaixo do conteúdo.
+     No mobile o conteúdo define a altura naturalmente. */
+  .hero-wrap {
+    min-height: 0;
+    justify-content: flex-start;
+    padding: 40px 0 32px;
   }
+
+  .hero-title {
+    font-size: 28px;
+    letter-spacing: -0.8px;
+  }
+
   .hero-sub {
     font-size: 14px;
   }
+
   .input-row {
     flex-direction: column;
   }
+
   .btn-run {
     width: 100%;
     justify-content: center;
   }
+
   .navbar {
     padding: 0 16px;
   }
+
   .trust-row {
     gap: 12px;
   }
@@ -846,9 +863,11 @@ footer a:hover {
 .score-number.high {
   color: var(--green);
 }
+
 .score-number.medium {
   color: #d29922;
 }
+
 .score-number.low {
   color: var(--red);
 }
@@ -858,6 +877,7 @@ footer a:hover {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
+
   .score-left {
     flex-direction: row;
     border-right: none;
