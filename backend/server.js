@@ -30,8 +30,8 @@ import { gerarAnalise } from './groq-service.js';
 // Em módulos ES, __dirname não existe por padrão — reconstruímos manualmente
 const __dirname    = dirname(fileURLToPath(import.meta.url));
 
-// Caminho absoluto para a pasta do frontend (um nível acima do backend)
-const FRONTEND_DIR = join(__dirname, '..', 'frontend');
+// Caminho absoluto para a pasta do frontend (dentro do próprio backend no deploy)
+const FRONTEND_DIR = join(__dirname, 'frontend');
 
 // Porta do servidor — usa variável de ambiente se disponível (Hostinger), senão 8000
 const PORT = process.env.PORT || 8000;
