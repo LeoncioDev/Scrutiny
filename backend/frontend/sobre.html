@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sobre — Scrutiny</title>
   <meta name="description" content="Sobre o Scrutiny — análise de perfis GitHub com IA." />
+
+  <!-- Favicon — mesmo do portfólio -->
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="/static/style.css" />
 </head>
@@ -13,10 +17,8 @@
 <body>
 
   <nav class="navbar">
-    <a href="/" class="logo">
-      <div class="logo-mark"><i class="fas fa-magnifying-glass-chart" style="font-size:11px;"></i></div>
-      Scrutiny
-    </a>
+    <!-- Logo padronizado com index.html — fonte mono, hover azul -->
+    <a href="/" class="logo">Scrutiny</a>
     <div class="nav-right">
       <a href="/" class="nav-link">Home</a>
       <a href="https://github.com/LeoncioDev" target="_blank" class="nav-link" title="GitHub">
@@ -25,95 +27,100 @@
     </div>
   </nav>
 
-  <main style="max-width: 640px; margin: 0 auto; padding: 48px 20px 80px;">
+  <main style="max-width:640px;margin:0 auto;padding:48px 20px 80px;">
 
-    <div style="margin-bottom: 36px;">
-      <div class="badge" style="margin-bottom: 20px;">
+    <div style="margin-bottom:36px;">
+      <div class="badge" style="margin-bottom:20px;">
         <span class="badge-dot"></span>
         Powered by Groq AI · LLaMA 3.3
       </div>
-      <h1 style="font-size: 28px; font-weight: 700; letter-spacing: -0.5px; color: var(--text-1); margin-bottom: 10px;">
+      <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.5px;color:var(--text-1);margin-bottom:10px;">
         Sobre o Scrutiny
       </h1>
-      <p style="font-size: 14px; color: var(--text-2); line-height: 1.7;">
-        Análise técnica automática de perfis GitHub com inteligência artificial.
+      <p style="font-size:14px;color:var(--text-2);line-height:1.7;">
+        Analisa perfis GitHub e gera uma opinião honesta sobre os projetos — tecnologias detectadas, documentação e o
+        que chama atenção.
       </p>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 12px;">
+    <div style="display:flex;flex-direction:column;gap:12px;">
 
-      <div
-        style="background: var(--surface-1); border: 1px solid var(--border-default); border-radius: 10px; padding: 20px;">
+      <!-- Origem -->
+      <div style="background:var(--surface-1);border:1px solid var(--border-default);border-radius:10px;padding:20px;">
         <h2
-          style="font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);">
+          style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border-faint);">
           💡 Origem
         </h2>
-        <p style="font-size: 13px; color: var(--text-2); line-height: 1.7;">
-          O Scrutiny nasceu da necessidade de analisar perfis de desenvolvedores de forma rápida e objetiva.
-          Como o GitHub é o portfólio real de um dev, a ferramenta lê esses dados públicos e gera uma análise
-          técnica detalhada com o apoio de IA — em segundos.
+        <p style="font-size:13px;color:var(--text-2);line-height:1.7;">
+          O Scrutiny nasceu da necessidade de entender um perfil GitHub de forma rápida e objetiva.
+          Em vez de abrir repositório por repositório, a ferramenta lê os READMEs e detecta as tecnologias
+          automaticamente —
+          e usa IA para dar uma opinião direta sobre o que encontrou.
         </p>
       </div>
 
-      <div
-        style="background: var(--surface-1); border: 1px solid var(--border-default); border-radius: 10px; padding: 20px;">
+      <!-- Para quem é -->
+      <div style="background:var(--surface-1);border:1px solid var(--border-default);border-radius:10px;padding:20px;">
         <h2
-          style="font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);">
+          style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border-faint);">
           🎯 Para quem é
         </h2>
-        <p style="font-size: 13px; color: var(--text-2); line-height: 1.7;">
-          <strong style="color: var(--text-1);">Recrutadores</strong> que precisam avaliar candidatos tecnicamente de
-          forma rápida,
-          sem precisar ler repositório por repositório. E <strong style="color: var(--text-1);">desenvolvedores</strong>
-          que querem
-          entender seus pontos fortes e o que melhorar no próprio portfólio.
+        <p style="font-size:13px;color:var(--text-2);line-height:1.7;">
+          Para qualquer pessoa que queira uma leitura rápida de um perfil —
+          seja um <strong style="color:var(--text-1);">dev</strong> que quer saber como o próprio perfil aparece para
+          quem visita,
+          ou alguém que quer entender o que os projetos de outra pessoa dizem sobre ela.
         </p>
       </div>
 
-      <div
-        style="background: var(--surface-1); border: 1px solid var(--border-default); border-radius: 10px; padding: 20px;">
+      <!-- Stack -->
+      <div style="background:var(--surface-1);border:1px solid var(--border-default);border-radius:10px;padding:20px;">
         <h2
-          style="font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);">
+          style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border-faint);">
           ⚙️ Stack
         </h2>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
-            <span style="color: var(--text-3); min-width: 100px;">Backend</span>
-            <span style="color: var(--text-2);">Node.js + Express</span>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;">
+            <span style="color:var(--text-3);min-width:100px;font-family:var(--mono);font-size:11px;">Backend</span>
+            <span style="color:var(--text-2);">Node.js · Express</span>
           </div>
-          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
-            <span style="color: var(--text-3); min-width: 100px;">IA</span>
-            <span style="color: var(--text-2);">Groq API · LLaMA 3.3 70B</span>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;">
+            <span style="color:var(--text-3);min-width:100px;font-family:var(--mono);font-size:11px;">IA</span>
+            <span style="color:var(--text-2);">Groq API · LLaMA 3.3 70B</span>
           </div>
-          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
-            <span style="color: var(--text-3); min-width: 100px;">Dados</span>
-            <span style="color: var(--text-2);">GitHub API (Octokit)</span>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;">
+            <span style="color:var(--text-3);min-width:100px;font-family:var(--mono);font-size:11px;">Dados</span>
+            <span style="color:var(--text-2);">GitHub API (Octokit)</span>
           </div>
-          <div style="display: flex; align-items: center; gap: 10px; font-size: 13px;">
-            <span style="color: var(--text-3); min-width: 100px;">Frontend</span>
-            <span style="color: var(--text-2);">HTML, CSS, JavaScript</span>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;">
+            <span style="color:var(--text-3);min-width:100px;font-family:var(--mono);font-size:11px;">Frontend</span>
+            <span style="color:var(--text-2);">HTML · CSS · JavaScript</span>
           </div>
         </div>
       </div>
 
-      <div
-        style="background: var(--surface-1); border: 1px solid var(--border-default); border-radius: 10px; padding: 20px;">
+      <!-- Autor -->
+      <div style="background:var(--surface-1);border:1px solid var(--border-default);border-radius:10px;padding:20px;">
         <h2
-          style="font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-faint);">
+          style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border-faint);">
           👨‍💻 Autor
         </h2>
-        <p style="font-size: 13px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px;">
-          Desenvolvido por <strong style="color: var(--text-1);">João Paulo Leôncio</strong> — estudante de ADS e
-          desenvolvedor em formação.
+        <p style="font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:12px;">
+          Desenvolvido por <strong style="color:var(--text-1);">João Paulo Leôncio</strong> —
+          Full Stack Developer de Maceió, Brazil.
         </p>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
           <a href="https://github.com/LeoncioDev" target="_blank"
-            style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--accent); text-decoration: none; padding: 6px 12px; background: var(--accent-soft); border: 1px solid rgba(68,147,248,0.2); border-radius: 6px; transition: opacity 0.15s;">
-            <i class="fab fa-github"></i> github.com/LeoncioDev
+            style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-family:var(--mono);color:var(--accent);text-decoration:none;padding:6px 12px;background:var(--accent-soft);border:1px solid rgba(68,147,248,0.2);border-radius:6px;transition:opacity 0.15s;">
+            <i class="fab fa-github"></i> LeoncioDev
           </a>
           <a href="https://linkedin.com/in/leonciodev" target="_blank"
-            style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--accent); text-decoration: none; padding: 6px 12px; background: var(--accent-soft); border: 1px solid rgba(68,147,248,0.2); border-radius: 6px; transition: opacity 0.15s;">
-            <i class="fab fa-linkedin"></i> linkedin.com/in/leonciodev
+            style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-family:var(--mono);color:var(--accent);text-decoration:none;padding:6px 12px;background:var(--accent-soft);border:1px solid rgba(68,147,248,0.2);border-radius:6px;transition:opacity 0.15s;">
+            <i class="fab fa-linkedin"></i> leonciodev
+          </a>
+          <a href="https://leonciodev.me" target="_blank"
+            style="display:inline-flex;align-items:center;gap:7px;font-size:12px;font-family:var(--mono);color:var(--accent);text-decoration:none;padding:6px 12px;background:var(--accent-soft);border:1px solid rgba(68,147,248,0.2);border-radius:6px;transition:opacity 0.15s;">
+            <i class="fas fa-globe"></i> leonciodev.me
           </a>
         </div>
       </div>

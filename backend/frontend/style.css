@@ -113,32 +113,18 @@ body {
   gap: 9px;
   text-decoration: none;
   color: var(--text-1);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-  transition: opacity var(--t);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: color var(--t);
 }
 
 .logo:hover {
-  opacity: 0.8;
+  color: var(--accent);
 }
 
-.logo-mark {
-  width: 26px;
-  height: 26px;
-  border-radius: var(--r1);
-  background: var(--accent);
-  display: grid;
-  place-items: center;
-  font-size: 13px;
-  flex-shrink: 0;
-  box-shadow: 0 0 12px rgba(68, 147, 248, 0.4);
-  transition: box-shadow var(--t);
-}
 
-.logo:hover .logo-mark {
-  box-shadow: 0 0 20px rgba(68, 147, 248, 0.6);
-}
 
 .nav-right {
   display: flex;
