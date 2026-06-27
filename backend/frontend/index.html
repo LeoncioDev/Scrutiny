@@ -1,204 +1,135 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Scrutiny — Análise de Perfis GitHub com IA</title>
-    <meta
-      name="description"
-      content="Analise perfis GitHub com inteligência artificial. Relatório técnico detalhado em segundos."
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="/static/style.css" />
-  </head>
-  <body>
-    <nav class="navbar">
-      <a href="/" class="logo">
-        <div class="logo-mark"><i class="fas fa-magnifying-glass-chart" style="font-size:11px;"></i></div>
-        Scrutiny
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scrutiny — O que seu GitHub diz sobre você</title>
+  <meta name="description"
+    content="Cole um usuário do GitHub e veja as tecnologias do perfil e uma opinião honesta sobre os projetos." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="logo">
+      <div class="logo-mark"><i class="fas fa-magnifying-glass-chart" style="font-size:11px;"></i></div>
+      Scrutiny
+    </a>
+    <div class="nav-right">
+      <a href="/sobre" class="nav-link">Sobre</a>
+      <a href="https://github.com/LeoncioDev" target="_blank" class="nav-link" title="GitHub">
+        <i class="fab fa-github"></i>
       </a>
-      <div class="nav-right">
-        <a href="/sobre" class="nav-link">Sobre</a>
-        <a
-          href="https://github.com/LeoncioDev"
-          target="_blank"
-          class="nav-link"
-          title="GitHub"
-        >
-          <i class="fab fa-github"></i>
-        </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="hero-wrap">
+
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Powered by Groq AI · LLaMA 3.3
       </div>
-    </nav>
 
-    <main>
-      <div class="hero-wrap">
-        <div class="badge">
-          <span class="badge-dot"></span>
-          Powered by Groq AI · LLaMA 3.3
-        </div>
+      <h1 class="hero-title">O que seu GitHub<br>diz sobre você?</h1>
 
-        <h1 class="hero-title">
-          Analise perfis GitHub com inteligência artificial
-        </h1>
+      <p class="hero-sub">
+        Cole um usuário do GitHub e receba uma opinião honesta sobre os projetos e as tecnologias do perfil.
+      </p>
 
-        <p class="hero-sub">
-          Cole um usuário ou URL do GitHub e receba um relatório técnico
-          detalhado — repositórios, stack, nível de senioridade e recomendações
-          concretas.
-        </p>
+      <div class="form-card">
+        <form id="form">
 
-        <div class="mode-tabs">
-          <label class="mode-tab">
-            <input type="radio" name="modo" value="recrutamento" checked />
-            <div class="tab-label">
-              <i class="fas fa-magnifying-glass"></i>
-              Recrutador
+          <div class="input-row">
+            <div class="input-wrap">
+              <i class="fab fa-github input-icon"></i>
+              <input type="text" id="username" class="main-input" placeholder="usuário ou github.com/usuario"
+                autocomplete="off" spellcheck="false" />
             </div>
-          </label>
-          <label class="mode-tab">
-            <input type="radio" name="modo" value="autoanalise" />
-            <div class="tab-label">
-              <i class="fas fa-user"></i>
-              Autoanálise
-            </div>
-          </label>
-        </div>
+            <button type="submit" class="btn-run" id="btn-run">
+              <i class="fas fa-bolt"></i>
+              Analisar
+            </button>
+          </div>
 
-        <div class="form-card">
-          <form id="form">
-            <!-- Input principal -->
-            <div class="input-row">
-              <div class="input-wrap">
-                <i class="fab fa-github input-icon"></i>
-                <input
-                  type="text"
-                  id="username"
-                  class="main-input"
-                  placeholder="usuário ou github.com/usuario"
-                  autocomplete="off"
-                  spellcheck="false"
-                />
-              </div>
-              <button type="submit" class="btn-run" id="btn-run">
-                <i class="fas fa-bolt"></i>
-                Analisar
-              </button>
-            </div>
+        </form>
+      </div>
 
-            <!-- Campo colapsável de match com vaga -->
-            <div class="job-toggle-row" id="job-toggle-row">
-              <button
-                type="button"
-                class="job-toggle-btn"
-                id="job-toggle-btn"
-                aria-expanded="false"
-              >
-                <i class="fas fa-plus job-toggle-icon" id="job-toggle-icon"></i>
-                <span>Comparar com uma vaga</span>
-                <span class="job-toggle-badge">opcional</span>
-              </button>
-            </div>
+      <div class="trust-row">
+        <span class="trust-item"><i class="fas fa-lock"></i> Somente dados públicos</span>
+        <span class="trust-item"><i class="fas fa-bolt"></i> Resultado em segundos</span>
+        <span class="trust-item"><i class="fas fa-circle-check"></i> Gratuito</span>
+      </div>
 
-            <div class="job-field" id="job-field" aria-hidden="true">
-              <textarea
-                id="job-description"
-                class="job-textarea"
-                placeholder="Cole aqui a descrição da vaga (requisitos, stack, diferenciais...)&#10;&#10;A IA irá avaliar o candidato especificamente para esta vaga."
-                rows="5"
-              ></textarea>
-            </div>
-          </form>
-        </div>
+      <div class="error-strip" id="error-strip">
+        <i class="fas fa-circle-exclamation"></i>
+        <span id="error-msg"></span>
+      </div>
 
-        <div class="trust-row">
-          <span class="trust-item">
-            <i class="fas fa-lock"></i>
-            Somente dados públicos
-          </span>
-          <span class="trust-item">
-            <i class="fas fa-bolt"></i>
-            Resultado em segundos
-          </span>
-          <span class="trust-item">
-            <i class="fas fa-circle-check"></i>
-            Gratuito
-          </span>
-        </div>
-
-        <div class="error-strip" id="error-strip">
-          <i class="fas fa-circle-exclamation"></i>
-          <span id="error-msg"></span>
-        </div>
-
-        <div class="loader" id="loader">
-          <div class="loader-ring"></div>
-          <span class="loader-label" id="loader-label">Analisando...</span>
-          <span class="loader-sub" id="loader-sub"></span>
+      <!-- Loader terminal -->
+      <div class="loader" id="loader">
+        <div class="loader-terminal">
+          <div class="terminal-header">
+            <span class="terminal-dot td-r"></span>
+            <span class="terminal-dot td-y"></span>
+            <span class="terminal-dot td-g"></span>
+            <span class="terminal-title">scrutiny — analisando perfil</span>
+          </div>
+          <div class="loader-log" id="loader-log"></div>
+          <div class="loader-progress">
+            <div class="loader-bar-fill" id="loader-bar-fill"></div>
+          </div>
         </div>
       </div>
 
-      <!-- Painel de resultado -->
-      <div class="result-panel" id="result-panel">
-        <!-- Score card -->
-        <div class="score-card" id="score-card">
-          <div class="score-left">
-            <div class="score-number-wrap">
-              <span class="score-number" id="score-number">0.0</span>
-              <span class="score-max">/10</span>
-            </div>
-            <span class="score-level" id="score-level">—</span>
-          </div>
-          <div class="score-bars">
-            <div class="score-bar-item">
-              <span class="score-bar-label">Qualidade</span>
-              <div class="score-bar-track">
-                <div class="score-bar-fill" id="bar-qualidade"></div>
-              </div>
-              <span class="score-bar-val" id="val-qualidade">—</span>
-            </div>
-            <div class="score-bar-item">
-              <span class="score-bar-label">Atividade</span>
-              <div class="score-bar-track">
-                <div class="score-bar-fill" id="bar-atividade"></div>
-              </div>
-              <span class="score-bar-val" id="val-atividade">—</span>
-            </div>
-            <div class="score-bar-item">
-              <span class="score-bar-label">Documentação</span>
-              <div class="score-bar-track">
-                <div class="score-bar-fill" id="bar-documentacao"></div>
-              </div>
-              <span class="score-bar-val" id="val-documentacao">—</span>
-            </div>
-          </div>
-          <p class="score-resumo" id="score-resumo"></p>
-        </div>
+    </div>
 
-        <!-- Análise da IA -->
-        <div class="result-header">
-          <div class="result-label">
-            <span class="result-dot"></span>
-            Relatório gerado
-          </div>
+    <!-- Resultado -->
+    <div class="result-panel" id="result-panel">
+
+      <!-- Tecnologias detectadas -->
+      <div class="result-section">
+        <div class="result-section-label">
+          <span class="result-dot"></span>
+          Tecnologias detectadas
+        </div>
+        <div class="tech-wrap" id="tech-wrap"></div>
+      </div>
+
+      <!-- Projetos recentes -->
+      <div class="result-section">
+        <div class="result-section-label">
+          <span class="result-dot"></span>
+          Projetos mais recentes
+        </div>
+        <div class="repos-wrap" id="repos-wrap"></div>
+      </div>
+
+      <!-- Opinião da IA -->
+      <div class="result-section">
+        <div class="result-section-label">
+          <span class="result-dot"></span>
+          Opinião
         </div>
         <div class="result-body" id="result-body"></div>
       </div>
-    </main>
 
-    <footer>
-      <p>
-        Scrutiny &mdash; por
-        <a href="https://github.com/LeoncioDev" target="_blank"
-          >João Paulo Leôncio</a
-        >
-        &nbsp;·&nbsp;
-        <a href="/sobre">Sobre o projeto</a>
-      </p>
-    </footer>
+    </div>
+  </main>
 
-    <script src="/static/script.js"></script>
-  </body>
+  <footer>
+    <p>
+      Scrutiny &mdash; por
+      <a href="https://github.com/LeoncioDev" target="_blank">João Paulo Leôncio</a>
+      &nbsp;·&nbsp;
+      <a href="/sobre">Sobre o projeto</a>
+    </p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+
 </html>
