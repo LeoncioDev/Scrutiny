@@ -25,9 +25,6 @@ export async function buscarDadosGithub(username) {
   /* 1. Perfil público */
   const { data: user } = await octokit.users.getByUsername({ username });
 
-  /* 2. README do perfil (repo com mesmo nome do usuário) */
-  const readmeText = await buscarReadmePerfil(username);
-
   /* 3. Lista repos públicos ordenados por push recente */
   const { data: todosRepos } = await octokit.repos.listForUser({
     username,
@@ -36,9 +33,11 @@ export async function buscarDadosGithub(username) {
     per_page:  30,
   });
 
-  /* Filtra forks e repo de perfil */
+  /* Filtra forks e repo de perfil (repo com mesmo nome do usuário ou do nome real) */
   const reposFiltrados = todosRepos.filter(r =>
-    !r.fork && r.name !== username
+    !r.fork &&
+    r.name.toLowerCase() !== username.toLowerCase() &&
+    r.name.toLowerCase() !== (user.login || '').toLowerCase()
   );
 
   /* Pega os 3 mais recentes */
@@ -93,7 +92,7 @@ export async function buscarDadosGithub(username) {
     html_url:     user.html_url,
     public_repos: user.public_repos,
     linguagens,
-    readme_text:  readmeText,
+    readme_text:  '',   /* perfil README ignorado — IA lê só docs de projetos */
     repos:        reposDetalhes,
   };
 }
@@ -101,15 +100,35 @@ export async function buscarDadosGithub(username) {
 /**
  * Busca o README do perfil do usuário.
  */
+/**
+ * Remove linhas que não agregam para a IA:
+ * badges (![...]), links de imagem, linhas só com URLs,
+ * tags HTML inline, linhas vazias em excesso.
+ */
+function limparReadme(texto) {
+  return texto
+    .split('\n')
+    .filter(l => {
+      const t = l.trim();
+      if (!t) return false;                          /* linha vazia       */
+      if (/^!\[.*\]\(/.test(t)) return false;      /* imagens/badges    */
+      if (/^<img|^<a |^<div|^<p /i.test(t)) return false; /* HTML inline  */
+      if (/^https?:\/\//.test(t)) return false;    /* URLs soltas       */
+      if (/^\[.*\]:\s*https?/.test(t)) return false; /* referências MD  */
+      return true;
+    })
+    .join('\n')
+    .trim();
+}
+
 async function buscarReadmePerfil(username) {
   try {
     const { data } = await octokit.repos.getReadme({
       owner: username,
       repo:  username,
     });
-    return Buffer.from(data.content, 'base64')
-      .toString('utf-8')
-      .slice(0, MAX_README_PERFIL);
+    const raw = Buffer.from(data.content, 'base64').toString('utf-8');
+    return limparReadme(raw).slice(0, MAX_README_PERFIL);
   } catch {
     return '';
   }
